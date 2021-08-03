@@ -3,9 +3,7 @@ Rails.application.routes.draw do
   root "pages#home"
   get 'pages/home', to: 'pages#home'
 
-  get '/recipes', to: 'recipes#index'
-
-  #resources :recipes
+  resources :recipes
 
 
   # The priority is based upon order of creation: first created -> highest priority.
