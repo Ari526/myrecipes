@@ -30,15 +30,22 @@ class ChefsController < ApplicationController
 		@chef = Chef.find(params[:id])
     end
 
-     def update
-         @chef = Chef.find(params[:id])
-         if @chef.update(chef_params)
-           flash[:success] = "Your account was updated successfully"
-           redirect_to @chef
-        else
-          render 'edit'
-        end  
-     end
+  def update
+     @chef = Chef.find(params[:id])
+     if @chef.update(chef_params)
+       flash[:success] = "Your account was updated successfully"
+       redirect_to @chef
+    else
+      render 'edit'
+    end  
+  end
+
+  def destroy
+  	@chef = Chef.find(params[:id])
+  	@chef.destroy
+  	flash[:danger] = "Chef and all associated recipes have been deleted!"
+  	redirect_to chefs_path
+  end
 
 	private
 
